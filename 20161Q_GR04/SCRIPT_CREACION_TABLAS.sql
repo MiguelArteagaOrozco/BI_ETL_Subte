@@ -1,9 +1,12 @@
 USE [MIS_GRUPO_04]
 GO
 
+DROP TABLE dbo.LK_Estacion
+DROP TABLE dbo.LK_Linea
+
 CREATE TABLE [dbo].[LK_Linea](
 	[Linea_SK] [int] IDENTITY(1,1) NOT NULL,
-	[Linea_nombre] [varchar](max) NOT NULL,
+	[Linea_nombre] [varchar](50) NOT NULL,
  CONSTRAINT [PK_LK_Linea] PRIMARY KEY CLUSTERED 
 (
 	[Linea_SK] ASC
@@ -18,8 +21,8 @@ CREATE TABLE [dbo].[LK_Estacion](
 	[Estacion_YCoord] [decimal](19, 15) NOT NULL,
 	[Estacion_AscensorCon] [int] NOT NULL,
 	[Estacion_EscaleraCon] [int] NOT NULL,
-	[Estacion_EstaAdaptado] [bit] NOT NULL,
-	[Estacion_EsAccesible] [bit] NOT NULL,
+	[Estacion_EstaAdaptado] [varchar](50) NOT NULL,
+	[Estacion_EsAccesible] [varchar](50) NOT NULL,
 	[Linea_SK] [int] NOT NULL,
 	[Estacion_Nombre] [varchar](50) NOT NULL,
 	[Estacion_ID] [int] NOT NULL,
