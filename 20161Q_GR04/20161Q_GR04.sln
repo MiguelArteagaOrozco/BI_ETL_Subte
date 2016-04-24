@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "ETL_Subte", "ETL_Subte\ETL_Subte.dtproj", "{2BFD09B7-742C-465A-BD73-C24A45DA265B}"
+Project("{D183A3D8-5FD8-494B-B014-37F57B35E655}") = "20161Q_GR04", "20161Q_GR04\20161Q_GR04.dtproj", "{7D0F2975-4FC2-4A91-BF8B-833D8CE76002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2BFD09B7-742C-465A-BD73-C24A45DA265B}.Development|Default.ActiveCfg = Development
-		{2BFD09B7-742C-465A-BD73-C24A45DA265B}.Development|Default.Build.0 = Development
+		{7D0F2975-4FC2-4A91-BF8B-833D8CE76002}.Development|Default.ActiveCfg = Development
+		{7D0F2975-4FC2-4A91-BF8B-833D8CE76002}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
