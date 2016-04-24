@@ -1,6 +1,9 @@
 USE [MIS_GRUPO_04]
 GO
 
+IF OBJECT_ID('dbo.LK_Causa', 'U') IS NOT NULL 
+  DROP TABLE dbo.LK_Causa; 
+  
 IF OBJECT_ID('dbo.LK_Mes', 'U') IS NOT NULL 
   DROP TABLE dbo.LK_Mes; 
 
@@ -106,3 +109,16 @@ INSERT INTO dbo.LK_Mes (Mes_Numero, Anio_SK)
 	SELECT 11, Anio_SK FROM dbo.LK_Anio
 	UNION ALL
 	SELECT 12, Anio_SK FROM dbo.LK_Anio
+
+-------------------------------------------------------------
+------ INSERTAR ACA EL RESTO DE LA DIM TIEMPO ---------------
+-------------------------------------------------------------
+
+CREATE TABLE [dbo].[LK_Causa](
+	[Causa_Sk] [int] IDENTITY(1,1) NOT NULL,
+	[Causa_Descripcion] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_LK_Causa] PRIMARY KEY CLUSTERED 
+(
+	[Causa_Sk] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
