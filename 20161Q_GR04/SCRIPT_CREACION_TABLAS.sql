@@ -130,6 +130,13 @@ CREATE TABLE [dbo].[LK_Dia](
 
 GO
 
+ALTER TABLE [dbo].[LK_Dia]  WITH CHECK ADD  CONSTRAINT [FK_LK_Dia_LK_Mes] FOREIGN KEY([Mes_Sk])
+REFERENCES [dbo].[LK_Mes] ([Mes_SK])
+GO
+
+ALTER TABLE [dbo].[LK_Dia] CHECK CONSTRAINT [FK_LK_Dia_LK_Mes]
+GO
+
 
 -------------------------------------------------------------
 ------ INSERTAR ACA EL RESTO DE LA DIM TIEMPO ---------------
