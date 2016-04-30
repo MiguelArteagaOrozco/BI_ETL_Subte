@@ -1,35 +1,32 @@
 USE [MIS_GRUPO_04]
 GO
 
-IF OBJECT_ID('dbo.BT_Pases', 'U') IS NOT NULL 
-  DROP TABLE dbo.BT_Pases; 
+IF OBJECT_ID('dbo.LK_FranjaHoraria', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_FranjaHoraria;
 
-IF OBJECT_ID('dbo.LK_FranjaHoraria', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_FranjaHoraria; 
+IF OBJECT_ID('dbo.LK_Dia', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_Dia;
 
-IF OBJECT_ID('dbo.LK_Dia', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_Dia; 
+IF OBJECT_ID('dbo.LK_Causa', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_Causa;
 
-IF OBJECT_ID('dbo.LK_Causa', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_Causa; 
-  
-IF OBJECT_ID('dbo.LK_Mes', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_Mes; 
+IF OBJECT_ID('dbo.LK_Mes', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_Mes;
 
-IF OBJECT_ID('dbo.LK_Anio', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_Anio; 
+IF OBJECT_ID('dbo.LK_Anio', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_Anio;
 
-IF OBJECT_ID('dbo.LK_Estacion', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_Estacion; 
-  
-IF OBJECT_ID('dbo.LK_Linea', 'U') IS NOT NULL 
-  DROP TABLE dbo.LK_Linea; 
+IF OBJECT_ID('dbo.LK_Estacion', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_Estacion;
+
+IF OBJECT_ID('dbo.LK_Linea', 'U') IS NOT NULL
+  DROP TABLE dbo.LK_Linea;
 
 
 CREATE TABLE [dbo].[LK_Linea](
 	[Linea_SK] [int] IDENTITY(1,1) NOT NULL,
 	[Linea_nombre] [varchar](50) NOT NULL,
- CONSTRAINT [PK_LK_Linea] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_Linea] PRIMARY KEY CLUSTERED
 (
 	[Linea_SK] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -48,7 +45,7 @@ CREATE TABLE [dbo].[LK_Estacion](
 	[Linea_SK] [int] NOT NULL,
 	[Estacion_Nombre] [varchar](50) NOT NULL,
 	[Estacion_ID] [int] NOT NULL,
- CONSTRAINT [PK_LK_Estacion] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_Estacion] PRIMARY KEY CLUSTERED
 (
 	[Estacion_SK] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -64,7 +61,7 @@ GO
 CREATE TABLE [dbo].[LK_Anio](
 	[Anio_SK] [int] IDENTITY(1,1) NOT NULL,
 	[Anio_numero] [int] NOT NULL,
- CONSTRAINT [PK_LK_Anio] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_Anio] PRIMARY KEY CLUSTERED
 (
 	[Anio_SK] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -78,7 +75,7 @@ CREATE TABLE [dbo].[LK_Mes](
 	[Mes_SK] [int] IDENTITY(1,1) NOT NULL,
 	[Mes_Numero] [int] NOT NULL,
 	[Anio_SK] [int] NOT NULL,
- CONSTRAINT [PK_LK_Mes] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_Mes] PRIMARY KEY CLUSTERED
 (
 	[Mes_SK] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -93,39 +90,12 @@ GO
 ALTER TABLE [dbo].[LK_Mes] CHECK CONSTRAINT [FK_LK_Mes_LK_Anio]
 GO
 
---Inserto los meses de cada anio
---INSERT INTO dbo.LK_Mes (Mes_Numero, Anio_SK)
---	SELECT 1, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 2, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 3, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 4, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 5, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 6, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 7, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 8, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 9, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 10, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 11, Anio_SK FROM dbo.LK_Anio
---	UNION ALL
---	SELECT 12, Anio_SK FROM dbo.LK_Anio
-
-
 CREATE TABLE [dbo].[LK_Dia](
 	[Dia_SK] [int] IDENTITY(1,1) NOT NULL,
 	[Dia_Numero] [int] NOT NULL,
 	[Dia_DiaSemana] [int] NOT NULL,
 	[Mes_Sk] [int] NOT NULL,
- CONSTRAINT [PK_LK_Dia] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_Dia] PRIMARY KEY CLUSTERED
 (
 	[Dia_SK] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -140,6 +110,45 @@ GO
 ALTER TABLE [dbo].[LK_Dia] CHECK CONSTRAINT [FK_LK_Dia_LK_Mes]
 GO
 
+--creo tabla temporal
+create table #temp_time (
+	Anio int,
+	Mes int,
+	DiaSemana int,
+	Dia int
+);
+
+--query para llenar de fechas la tabla temporal
+with mycte as
+( select cast('2008-01-01' as datetime) DateValue
+union all
+select DateValue + 1
+from mycte
+where DateValue + 1 < '2017-01-01'
+) insert into #temp_time (Anio, Mes, Dia, DiaSemana)
+select Year(DateValue) as Anio,
+DATEPART(month ,DateValue) as Mes,
+DATEPART(day,DateValue) as Dia,
+DATEPART(DW,DateValue) as DiaSemana
+from mycte
+OPTION (MAXRECURSION 0);
+
+--inserto los anios
+insert into LK_Anio (Anio_numero)
+select Anio from #temp_time group by Anio order by Anio;
+
+--inserto los meses
+insert into LK_Mes (Mes_Numero, Anio_SK)
+select tt.Mes, a.Anio_SK from #temp_time tt inner join LK_Anio a on tt.Anio = a.Anio_numero group by a.Anio_SK, tt.Mes order by a.Anio_SK, tt.Mes;
+
+--inserto los días
+insert into LK_Dia (Dia_Numero, Dia_DiaSemana, Mes_Sk)
+select tt.Dia, tt.DiaSemana, m.Mes_SK from #temp_time tt, LK_Mes m, LK_Anio a
+where tt.Anio = a.Anio_numero and tt.Mes = m.Mes_Numero and a.Anio_SK = m.Anio_SK
+order by Anio, Mes, Dia;
+
+--borro tabla temporal
+drop table #temp_time;
 
 -------------------------------------------------------------
 ------ INSERTAR ACA EL RESTO DE LA DIM TIEMPO ---------------
@@ -148,7 +157,7 @@ GO
 CREATE TABLE [dbo].[LK_Causa](
 	[Causa_Sk] [int] IDENTITY(1,1) NOT NULL,
 	[Causa_Descripcion] [varchar](50) NOT NULL,
- CONSTRAINT [PK_LK_Causa] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_Causa] PRIMARY KEY CLUSTERED
 (
 	[Causa_Sk] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -159,14 +168,14 @@ CREATE TABLE [dbo].[LK_FranjaHoraria](
 	[FranjaHoraria_SK] [int] IDENTITY(1,1) NOT NULL,
 	[FranjaHoraria_Desde] [time](7) NOT NULL,
 	[FranjaHoraria_Hasta] [time](7) NOT NULL,
- CONSTRAINT [PK_LK_FranjaHoraria] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_LK_FranjaHoraria] PRIMARY KEY CLUSTERED
 (
 	[FranjaHoraria_SK] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 INSERT INTO dbo.LK_FranjaHoraria (FranjaHoraria_Desde, FranjaHoraria_Hasta)
-VALUES 
+VALUES
 	('00:00', '00:14'),('00:15', '00:29'),('00:30', '00:44'),('00:45', '00:59'),
 	('01:00', '01:14'),('01:15', '01:29'),('01:30', '01:44'),('01:45', '01:59'),
 	('02:00', '02:14'),('02:15', '02:29'),('02:30', '02:44'),('02:45', '02:59'),
