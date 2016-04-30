@@ -188,4 +188,37 @@ VALUES
 	('21:00', '21:14'),('21:15', '21:29'),('21:30', '21:44'),('21:45', '21:59'),
 	('22:00', '22:14'),('22:15', '22:29'),('22:30', '22:44'),('22:45', '22:59'),
 	('23:00', '23:14'),('23:15', '23:29'),('23:30', '23:44'),('23:45', '23:59')
-	
+
+
+CREATE TABLE [dbo].[BT_Pases](
+	[Estacion_SK] [int] NOT NULL,
+	[FranjaHoraria_SK] [int] NOT NULL,
+	[Dia_SK] [int] NOT NULL,
+	[CantPersonas] [int] NOT NULL,
+	[CantPasesPagos] [int] NOT NULL,
+	[CantPasesJubilados] [int] NOT NULL,
+	[CantPasesPlanes] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[BT_Pases]  WITH CHECK ADD  CONSTRAINT [FK_BT_Pases_LK_Dia] FOREIGN KEY([Dia_SK])
+REFERENCES [dbo].[LK_Dia] ([Dia_SK])
+GO
+
+ALTER TABLE [dbo].[BT_Pases] CHECK CONSTRAINT [FK_BT_Pases_LK_Dia]
+GO
+
+ALTER TABLE [dbo].[BT_Pases]  WITH CHECK ADD  CONSTRAINT [FK_BT_Pases_LK_Estacion] FOREIGN KEY([Estacion_SK])
+REFERENCES [dbo].[LK_Estacion] ([Estacion_SK])
+GO
+
+ALTER TABLE [dbo].[BT_Pases] CHECK CONSTRAINT [FK_BT_Pases_LK_Estacion]
+GO
+
+ALTER TABLE [dbo].[BT_Pases]  WITH CHECK ADD  CONSTRAINT [FK_BT_Pases_LK_FranjaHoraria] FOREIGN KEY([FranjaHoraria_SK])
+REFERENCES [dbo].[LK_FranjaHoraria] ([FranjaHoraria_SK])
+GO
+
+ALTER TABLE [dbo].[BT_Pases] CHECK CONSTRAINT [FK_BT_Pases_LK_FranjaHoraria]
+GO
