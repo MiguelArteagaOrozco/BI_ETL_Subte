@@ -1,3 +1,8 @@
+/*
+  este script es solo para nosotros
+  el proceso ETL solo debe llenar datos y no tocar estructuras
+*/
+
 USE [MIS_GRUPO_04]
 GO
 
@@ -144,7 +149,7 @@ select Anio from #temp_time group by Anio order by Anio;
 insert into LK_Mes (Mes_Numero, Anio_SK)
 select tt.Mes, a.Anio_SK from #temp_time tt inner join LK_Anio a on tt.Anio = a.Anio_numero group by a.Anio_SK, tt.Mes order by a.Anio_SK, tt.Mes;
 
---inserto los días
+--inserto los dÃ­as
 insert into LK_Dia (Dia_Numero, Dia_DiaSemana, Mes_Sk)
 select tt.Dia, tt.DiaSemana, m.Mes_SK from #temp_time tt, LK_Mes m, LK_Anio a
 where tt.Anio = a.Anio_numero and tt.Mes = m.Mes_Numero and a.Anio_SK = m.Anio_SK
