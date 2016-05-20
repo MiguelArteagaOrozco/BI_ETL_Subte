@@ -9,6 +9,9 @@ GO
 IF OBJECT_ID('dbo.BT_Pases', 'U') IS NOT NULL
   DROP TABLE dbo.BT_Pases
 
+IF OBJECT_ID('dbo.BT_Despachos', 'U') IS NOT NULL
+  DROP TABLE dbo.BT_Despachos
+
 IF OBJECT_ID('dbo.LK_FranjaHoraria', 'U') IS NOT NULL
   DROP TABLE dbo.LK_FranjaHoraria;
 
