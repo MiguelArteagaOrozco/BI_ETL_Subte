@@ -245,3 +245,14 @@ GO
 
 ALTER TABLE [dbo].[BT_Pases] CHECK CONSTRAINT [FK_BT_Pases_LK_FranjaHoraria]
 GO
+
+CREATE TABLE [dbo].[BT_Despachos](
+	[Linea_SK] [int] NOT NULL,
+	[Causa_SK] [int] NOT NULL,
+	[FranjaHoraria_SK] [int] NOT NULL,
+	[Dia_SK] [int] NOT NULL,
+	[CantFormaciones] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+
