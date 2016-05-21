@@ -256,3 +256,31 @@ CREATE TABLE [dbo].[BT_Despachos](
 
 GO
 
+ALTER TABLE [dbo].[BT_Despachos]  WITH CHECK ADD  CONSTRAINT [FK_BT_Despachos_LK_Causa] FOREIGN KEY([Causa_SK])
+REFERENCES [dbo].[LK_Causa] ([Causa_Sk])
+GO
+
+ALTER TABLE [dbo].[BT_Despachos] CHECK CONSTRAINT [FK_BT_Despachos_LK_Causa]
+GO
+
+ALTER TABLE [dbo].[BT_Despachos]  WITH CHECK ADD  CONSTRAINT [FK_BT_Despachos_LK_Dia] FOREIGN KEY([Dia_SK])
+REFERENCES [dbo].[LK_Dia] ([Dia_SK])
+GO
+
+ALTER TABLE [dbo].[BT_Despachos] CHECK CONSTRAINT [FK_BT_Despachos_LK_Dia]
+GO
+
+ALTER TABLE [dbo].[BT_Despachos]  WITH CHECK ADD  CONSTRAINT [FK_BT_Despachos_LK_FranjaHoraria] FOREIGN KEY([FranjaHoraria_SK])
+REFERENCES [dbo].[LK_FranjaHoraria] ([FranjaHoraria_SK])
+GO
+
+ALTER TABLE [dbo].[BT_Despachos] CHECK CONSTRAINT [FK_BT_Despachos_LK_FranjaHoraria]
+GO
+
+ALTER TABLE [dbo].[BT_Despachos]  WITH CHECK ADD  CONSTRAINT [FK_BT_Despachos_LK_Linea] FOREIGN KEY([Linea_SK])
+REFERENCES [dbo].[LK_Linea] ([Linea_SK])
+GO
+
+ALTER TABLE [dbo].[BT_Despachos] CHECK CONSTRAINT [FK_BT_Despachos_LK_Linea]
+GO
+
