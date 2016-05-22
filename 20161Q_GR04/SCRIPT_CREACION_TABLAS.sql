@@ -283,3 +283,6 @@ GO
 
 ALTER TABLE [dbo].[BT_Despachos] CHECK CONSTRAINT [FK_BT_Despachos_LK_Linea]
 GO
+
+Create NonClustered Index Index_BT_Despachos On dbo.BT_Despachos (Linea_SK Asc, FranjaHoraria_SK Asc, Dia_SK Asc, Causa_Sk)
+GO
