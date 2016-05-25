@@ -167,7 +167,7 @@ drop table #temp_time;
 
 CREATE TABLE [dbo].[LK_Causa](
 	[Causa_Sk] [int] IDENTITY(1,1) NOT NULL,
-	[Causa_Descripcion] [varchar](50) NOT NULL,
+	[Causa_Descripcion] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_LK_Causa] PRIMARY KEY CLUSTERED
 (
 	[Causa_Sk] ASC
